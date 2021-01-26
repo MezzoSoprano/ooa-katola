@@ -10,7 +10,7 @@ import FirebaseAuth
 final class OrderListViewModel {
     
     typealias viewModelType = CurrentUserState
-    private var type: viewModelType {
+    var type: viewModelType {
         return authService.currentUserState()
     }
     
@@ -28,6 +28,8 @@ final class OrderListViewModel {
             return "User"
         case .unAuhtorized:
             return "Login please!"
+        case .manager:
+            return "Manager"
         }
     }
     
@@ -44,8 +46,7 @@ extension OrderListViewModel {
     func loadItems(handler: @escaping (Error?) -> Void ) {
         
         switch type {
-        
-        case .admin:
+        case .admin, .manager:
             orderService.orders { (result) in
                 
                 switch result {

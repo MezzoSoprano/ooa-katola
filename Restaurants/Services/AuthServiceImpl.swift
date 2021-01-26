@@ -8,7 +8,13 @@
 import Foundation
 import FirebaseAuth
 
+let adminsID = ["qHkkCxeUcUcPzabbGJEIDY92AqI2"]
+
 class AuthServiceImpl: AuthService {
+
+    var manages: [String] {
+        return cache.get([String].self, forKey: "restiki") ?? []
+    }
     
     var isSignedIn: Bool {
         guard Auth.auth().currentUser != nil else {
@@ -27,6 +33,10 @@ class AuthServiceImpl: AuthService {
 
         if adminsID.contains(userID) {
             return .admin
-        } else { return .user }
+        } else if !manages.isEmpty {
+            return .manager
+        }
+        
+        return .user
     }
 }

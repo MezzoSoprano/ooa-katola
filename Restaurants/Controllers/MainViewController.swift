@@ -12,6 +12,7 @@ import FirebaseFirestore
 class MainViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var manageUsersBarButtonItem: UIBarButtonItem!
     
     let cellID = "cell"
     
@@ -23,6 +24,11 @@ class MainViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         navigationItem.title = viewModel.barTitle
+        
+        if viewModel.type != .admin {
+            manageUsersBarButtonItem.tintColor = .clear
+            manageUsersBarButtonItem.isEnabled = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,15 +60,22 @@ extension MainViewController {
     }
     
     @IBAction func createOrder(_ sender: Any) {
-        fatalError()
-//        coordinator?.createOrder()
+        coordinator?.createOrder()
+    }
+    
+    @IBAction func manageUsers(_ sender: Any) {
+        coordinator?.manageUsers()
     }
 }
 
 // MARK: - Table View
 
-extension MainViewController: UITabBarDelegate, UITableViewDataSource {
+extension MainViewController: UITabBarDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.items[indexPath.row]
+        coordinator?.createOrder(order: item)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count
     }

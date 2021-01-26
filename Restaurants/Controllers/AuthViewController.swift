@@ -9,12 +9,12 @@ import UIKit
 import FirebaseUI
 
 class AuthViewController: UIViewController, Storyboarded {
-
-    weak var coordinator: MainCoordinator?
     
+    weak var coordinator: MainCoordinator?
+    var userService: UserService!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 }
 
@@ -45,7 +45,8 @@ extension AuthViewController: FUIAuthDelegate {
         if let error = error {
             self.createAlert(title: "Auhtantification error", message: error.localizedDescription)
         } else {
-            coordinator?.authDidFinish()
+            let authService = assembly.services.service(AuthService.self)
+            userService.createUser(id: Auth.auth().currentUser!.uid, email: authService.userEmail!) { _ in self.coordinator?.authDidFinish() }
         }
     }
 }

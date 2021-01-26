@@ -33,6 +33,10 @@ extension DependencyContainer {
             return OrderServiceImpl(db: try! container.resolve())
         }
         
+        container.register(.singleton) { () -> UserService in
+            return UserServiceImpl(db: try! container.resolve())
+        }
+
         return container
     }
 }

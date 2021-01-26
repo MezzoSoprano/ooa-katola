@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071F660725C02C47009E946C /* CodableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F660625C02C47009E946C /* CodableUtility.swift */; };
+		071F660E25C03E14009E946C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F660D25C03E14009E946C /* User.swift */; };
+		071F661125C03EA3009E946C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F661025C03EA3009E946C /* UserService.swift */; };
+		071F661425C03EAE009E946C /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F661325C03EAE009E946C /* UserServiceImpl.swift */; };
+		071F661725C04277009E946C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F661625C04277009E946C /* UsersViewController.swift */; };
+		071F661A25C04358009E946C /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F661925C04358009E946C /* UsersViewModel.swift */; };
 		0738D8F025BF5BAC0080819C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738D8EF25BF5BAC0080819C /* AuthService.swift */; };
 		0738D8F325BF5C160080819C /* AuthServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738D8F225BF5C160080819C /* AuthServiceImpl.swift */; };
 		0738D91D25BF620B0080819C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738D91C25BF620B0080819C /* Assembly.swift */; };
 		0738D92025BF621E0080819C /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738D91F25BF621E0080819C /* ServicesContainer.swift */; };
 		0738D92325BF634B0080819C /* CoreContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738D92225BF634B0080819C /* CoreContainer.swift */; };
+		077447C425C04DF7007CB1A2 /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077447C325C04DF7007CB1A2 /* EditUserViewController.swift */; };
+		077447C725C058AE007CB1A2 /* KeyedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077447C625C058AE007CB1A2 /* KeyedCache.swift */; };
 		56BBA715C86BD44A673A4B2D /* Pods_Restaurants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C855F3BAAE54498E92F652 /* Pods_Restaurants.framework */; };
 		760526A922994FD10006AEF4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760526A822994FD10006AEF4 /* Error.swift */; };
 		760526AB229960510006AEF4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760526AA229960510006AEF4 /* Date.swift */; };
@@ -36,11 +44,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		071F660625C02C47009E946C /* CodableUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUtility.swift; sourceTree = "<group>"; };
+		071F660D25C03E14009E946C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		071F661025C03EA3009E946C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		071F661325C03EAE009E946C /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
+		071F661625C04277009E946C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		071F661925C04358009E946C /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		0738D8EF25BF5BAC0080819C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0738D8F225BF5C160080819C /* AuthServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceImpl.swift; sourceTree = "<group>"; };
 		0738D91C25BF620B0080819C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		0738D91F25BF621E0080819C /* ServicesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
 		0738D92225BF634B0080819C /* CoreContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreContainer.swift; sourceTree = "<group>"; };
+		077447C325C04DF7007CB1A2 /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
+		077447C625C058AE007CB1A2 /* KeyedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCache.swift; sourceTree = "<group>"; };
 		1D6E27BEB8D01CADE2EB14CC /* Pods-Restaurants.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurants.debug.xcconfig"; path = "Target Support Files/Pods-Restaurants/Pods-Restaurants.debug.xcconfig"; sourceTree = "<group>"; };
 		760526A822994FD10006AEF4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		760526AA229960510006AEF4 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -105,6 +121,7 @@
 				7676FD4E229878B100591A17 /* Restaurant.swift */,
 				7676FD5022987AD600591A17 /* Customer.swift */,
 				760526A822994FD10006AEF4 /* Error.swift */,
+				071F660D25C03E14009E946C /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +133,8 @@
 				7676FD5522987E2000591A17 /* OrderServiceImpl.swift */,
 				0738D8EF25BF5BAC0080819C /* AuthService.swift */,
 				0738D8F225BF5C160080819C /* AuthServiceImpl.swift */,
+				071F661025C03EA3009E946C /* UserService.swift */,
+				071F661325C03EAE009E946C /* UserServiceImpl.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -125,6 +144,7 @@
 			children = (
 				0738D91B25BF61D40080819C /* Containers */,
 				76EC1B442291AB350065CFF7 /* AppDelegate.swift */,
+				077447C625C058AE007CB1A2 /* KeyedCache.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -136,6 +156,8 @@
 				76EC1B462291AB350065CFF7 /* AuthViewController.swift */,
 				F9D9C9752295AA7B00CBE5AF /* MainViewController.swift */,
 				76FCDAE82295EAF50046D7EE /* CreateOrderViewController.swift */,
+				071F661625C04277009E946C /* UsersViewController.swift */,
+				077447C325C04DF7007CB1A2 /* EditUserViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,6 +178,7 @@
 				76EC1B4B2291AB370065CFF7 /* Assets.xcassets */,
 				7676FD5722989A5800591A17 /* GoogleService-Info.plist */,
 				76EC1B502291AB370065CFF7 /* Info.plist */,
+				071F660625C02C47009E946C /* CodableUtility.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -206,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				76FCDAEB2295F17F0046D7EE /* OrderListViewModel.swift */,
+				071F661925C04358009E946C /* UsersViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -385,22 +409,30 @@
 				F9D9C9762295AA7B00CBE5AF /* MainViewController.swift in Sources */,
 				76FCDAE92295EAF50046D7EE /* CreateOrderViewController.swift in Sources */,
 				0738D92325BF634B0080819C /* CoreContainer.swift in Sources */,
+				071F661425C03EAE009E946C /* UserServiceImpl.swift in Sources */,
 				760526AB229960510006AEF4 /* Date.swift in Sources */,
 				7676FD5122987AD600591A17 /* Customer.swift in Sources */,
+				071F660725C02C47009E946C /* CodableUtility.swift in Sources */,
 				7676FD4D2298781E00591A17 /* Order.swift in Sources */,
 				F9D9C96F2295A4E800CBE5AF /* FirebaseAuth.swift in Sources */,
 				7676FD5622987E2000591A17 /* OrderServiceImpl.swift in Sources */,
 				0738D91D25BF620B0080819C /* Assembly.swift in Sources */,
 				76FCDAEC2295F17F0046D7EE /* OrderListViewModel.swift in Sources */,
 				F9D9C9742295A8DF00CBE5AF /* MainCoordinator.swift in Sources */,
+				071F661725C04277009E946C /* UsersViewController.swift in Sources */,
 				7676FD5422987CDC00591A17 /* OrderService.swift in Sources */,
 				76EC1B472291AB350065CFF7 /* AuthViewController.swift in Sources */,
 				F9D9C9722295A88B00CBE5AF /* Coordinator.swift in Sources */,
+				077447C425C04DF7007CB1A2 /* EditUserViewController.swift in Sources */,
 				76EC1B452291AB350065CFF7 /* AppDelegate.swift in Sources */,
+				077447C725C058AE007CB1A2 /* KeyedCache.swift in Sources */,
 				0738D8F025BF5BAC0080819C /* AuthService.swift in Sources */,
 				0738D92025BF621E0080819C /* ServicesContainer.swift in Sources */,
+				071F661125C03EA3009E946C /* UserService.swift in Sources */,
 				760526A922994FD10006AEF4 /* Error.swift in Sources */,
 				76A6C0F52291F88400390C6C /* UIViewController.swift in Sources */,
+				071F661A25C04358009E946C /* UsersViewModel.swift in Sources */,
+				071F660E25C03E14009E946C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

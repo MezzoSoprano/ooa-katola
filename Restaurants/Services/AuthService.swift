@@ -8,6 +8,8 @@
 import Foundation
 
 protocol AuthService {
+    
+    var manages: [String] { get }
     var isSignedIn: Bool { get }
     var userEmail: String? { get }
     

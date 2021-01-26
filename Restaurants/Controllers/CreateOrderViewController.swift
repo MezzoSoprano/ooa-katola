@@ -8,24 +8,34 @@
 import UIKit
 import FirebaseAuth
 
-var restaurants = [Restaurant(name: "Sunrise", address: "Kharkiv, Sichovih, 1", capacity: 10, pricePerPerson: 40), Restaurant(name: "Sunset", address: "Lviv, Hotceva, 15", capacity: 50, pricePerPerson: 10), Restaurant(name: "Mukola", address: "Odessa, Franka, 8", capacity: 20, pricePerPerson: 30)]
+var restaurants = [Restaurant(name: "Sunrise", address: "Kharkiv, Sichovih, 1", capacity: 10),
+                   Restaurant(name: "Sunset", address: "Lviv, Hotceva, 15", capacity: 50),
+                   Restaurant(name: "Mukola", address: "Odessa, Franka, 8", capacity: 20)]
 
 class CreateOrderViewController: UIViewController, Storyboarded {
     
     var coordinator: MainCoordinator?
     let orderService: OrderService = assembly.services.service(OrderService.self)
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var restaurantPicker: UIPickerView!
     @IBOutlet weak var personsAmountTextField: UITextField!
     @IBOutlet weak var totalPriceTextField: UITextField!
     
     var selectedRestaurant = restaurants[0]
+    var order: Order?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         datePicker.minimumDate = Date()
+        restaurantPicker.selectRow(0, inComponent: 0, animated: true)
+        if let order = order {
+            button.setTitle("Update Order", for: .normal)
+            datePicker.date = order.date
+            personsAmountTextField.text = "\(order.personsAmount)"
+        }
     }
 }
 
@@ -38,9 +48,6 @@ extension CreateOrderViewController {
     
     @IBAction func personsAmountDidChange(_ sender: Any) {
         
-        if let amount = Int(self.personsAmountTextField.text!) {
-             self.totalPriceTextField.text = String(amount * selectedRestaurant.pricePerPerson)
-        }
     }
     
     @IBAction func makeOrder(_ sender: Any) {
@@ -57,12 +64,24 @@ extension CreateOrderViewController {
             return
         }
         
+        if self.order == nil {
         orderService.makeOrder(order) { (result) in
             switch result {
             case .success(let order):
                 self.createAlert(title: "Successed!", message: "Order for \(order.restaurantName) at \(order.dateString) was created.")
             case .failure(let error):
                 self.createAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+        } else {
+            orderService.editOrder(from: self.order!, to: order) { result in
+                switch result {
+                case .success(_):
+                    self.createAlert(title: "Successed!", message: "Order for was updated.")
+                case .failure(let error):
+                    self.createAlert(title: "Error", message: error.localizedDescription)
+                }
+
             }
         }
     }

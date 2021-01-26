@@ -10,7 +10,6 @@ import FirebaseAuth
 enum CurrentUserState {
     case admin
     case user
+    case manager
     case unAuhtorized
 }
-
-let adminsID = ["qHkkCxeUcUcPzabbGJEIDY92AqI2"]

@@ -20,9 +20,9 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        
         if !authService.isSignedIn {
             let vc = AuthViewController.instantiate()
+            vc.userService = assembly.services.service(UserService.self)
             vc.coordinator = self
             navigationController.pushViewController(vc, animated: true)
         } else {
@@ -32,6 +32,7 @@ class MainCoordinator: Coordinator {
     
     func signOut() {
         let vc = AuthViewController.instantiate()
+        vc.userService = assembly.services.service(UserService.self)
         vc.coordinator = self
         navigationController.viewControllers.removeAll()
         navigationController.pushViewController(vc, animated: true)
@@ -45,9 +46,15 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func createOrder() {
+    func createOrder(order: Order? = nil) {
         let vc = CreateOrderViewController.instantiate()
         vc.coordinator = self
+        vc.order = order
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func manageUsers() {
+        let vc = UsersViewController.instantiate()
+        navigationController.present(vc, animated: true)
     }
 }

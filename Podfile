@@ -15,4 +15,5 @@ target 'Restaurants' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Dip'
+  pod 'KeychainAccess'
 end

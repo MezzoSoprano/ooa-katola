@@ -5,6 +5,8 @@
 //  Created by Святослав Катола on 5/24/19.
 //
 
+typealias ResultHandler<T> = (Result<T, Error>) -> Void
+
 protocol OrderService {
     
     func makeOrder(_ order: Order, completionHandler: @escaping (Result<Order, Error>) -> Void)

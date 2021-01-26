@@ -17,8 +17,9 @@ final class OrderServiceImpl: OrderService {
     }
     
     func makeOrder(_ order: Order, completionHandler: @escaping (Result<Order, Error>) -> Void) {
-        
-        let docRef = db.collection("order").whereField("restaurantName", isEqualTo: order.restaurantName).whereField("date", isEqualTo: order.date)
+        let docRef = db.collection("order")
+            .whereField("restaurantName", isEqualTo: order.restaurantName)
+            .whereField("date", isEqualTo: order.dateString)
         
         docRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -26,10 +27,10 @@ final class OrderServiceImpl: OrderService {
             } else {
                 var models = [Order]()
                 for document in querySnapshot!.documents {
-                    models.append((Order(dictionary: document.data())))
+                    models.append(Order(from: document.data()))
                 }
                 if models.count == 0 {
-                    self.db.collection("order").addDocument(data: ["date":order.date, "personsAmount":order.personsAmount, "restaurantName":order.restaurantName, "customerName":order.customerName])
+                    self.db.collection("order").addDocument(data: order.asDictionary())
                     completionHandler(.success(order))
                 } else {
                     completionHandler(.failure(OrderError.OrderConflict))
@@ -39,7 +40,9 @@ final class OrderServiceImpl: OrderService {
     }
     
     func cancelOrder(_ order: Order, completionHandler: @escaping (Result<Order, Error>) -> Void) {
-        let docRef = db.collection("order").whereField("restaurantName", isEqualTo: order.restaurantName).whereField("date", isEqualTo: order.date)
+        let docRef = db.collection("order")
+            .whereField("restaurantName", isEqualTo: order.restaurantName)
+            .whereField("date", isEqualTo: order.dateString)
         docRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 completionHandler(.failure(err))
@@ -56,7 +59,22 @@ final class OrderServiceImpl: OrderService {
     }
     
     func editOrder(from: Order, to: Order, completionHandler: @escaping (Result<Order, Error>) -> Void) {
+        let docRef = db.collection("order")
+            .whereField("restaurantName", isEqualTo: from.restaurantName)
+            .whereField("date", isEqualTo: from.dateString)
         
+        docRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                completionHandler(.failure(err))
+            } else {
+                var models = [Order]()
+                if let document = querySnapshot!.documents.first {
+                    document.reference.updateData(to.asDictionary())
+                    completionHandler(.success(to))
+                }
+            }
+        }
+
     }
     
     func ordersForCurrentUser(completionHandler: @escaping (Result<[Order], Error>) -> Void) {
@@ -69,7 +87,7 @@ final class OrderServiceImpl: OrderService {
             } else {
                 var models = [Order]()
                 for document in querySnapshot!.documents {
-                    models.append((Order(dictionary: document.data())))
+                    models.append(Order(from: document.data()))
                 }
                 completionHandler(.success(models))
             }
@@ -77,7 +95,12 @@ final class OrderServiceImpl: OrderService {
     }
     
     func orders(completionHandler: @escaping (Result<[Order], Error>) -> Void) {
-        let docRef = db.collection("order").order(by: "date", descending: true)
+        var docRef = db.collection("order").order(by: "date", descending: true)
+        let service = assembly.services.service(AuthService.self)
+        
+        if !service.manages.isEmpty, service.currentUserState() != .admin {
+            docRef = db.collection("order").whereField("restaurantName", in: service.manages)
+        }
         
         docRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -85,7 +108,7 @@ final class OrderServiceImpl: OrderService {
             } else {
                 var models = [Order]()
                 for document in querySnapshot!.documents {
-                    models.append((Order(dictionary: document.data())))
+                    models.append((Order(from: document.data())))
                 }
                 completionHandler(.success(models))
             }
